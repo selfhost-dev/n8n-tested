@@ -1,0 +1,7 @@
+label=cpx42-iso-cpu8-w2
+workflow=w2
+started_utc=2026-11-09T20:14:24Z
+k6_args=-e MODE=vus -e VUS=10 -e ITERATIONS=60
+load_start=1794255324
+load_end=1794255361
+ended_utc=2026-11-09T20:16:38Z

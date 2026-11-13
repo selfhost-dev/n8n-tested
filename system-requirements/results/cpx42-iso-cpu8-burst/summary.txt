@@ -1,0 +1,6 @@
+cpx42-iso-cpu8-burst  (w1 -e MODE=rate -e RATE=50 -e DURATION=1m)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           389      2552           2597       338       554    0  0
+task-runner          3         3              9         1         6    0  0
+k6: 1615 req, 21.69/s, failed 0.0%, p50 19591 ms, p95 22910 ms, p99 23045 ms
+volume n8n-data: 20.4 MiB (delta 15.0 MiB)

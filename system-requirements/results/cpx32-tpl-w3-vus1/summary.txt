@@ -1,0 +1,6 @@
+cpx32-tpl-w3-vus1  (w3 -e MODE=vus -e VUS=1 -e ITERATIONS=5)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           721       828            840        49       119    0  0
+task-runner          8         8            452         0         2    0  0
+host              1786      1845              -         0         0    0  0
+k6: 5 req, 1.39/s, failed 0.0%, p50 537 ms, p95 555 ms, p99 557 ms

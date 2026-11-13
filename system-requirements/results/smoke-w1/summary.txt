@@ -1,0 +1,6 @@
+smoke-w1  (w1 -e MODE=rate -e RATE=5 -e DURATION=20s)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           548       567           1194        93       220    0  0
+task-runner          8         8            196         2         6    0  0
+k6: 101 req, 4.95/s, failed 0.0%, p50 236 ms, p95 258 ms, p99 273 ms
+volume n8n-data: 144.0 MiB (delta 0.7 MiB)

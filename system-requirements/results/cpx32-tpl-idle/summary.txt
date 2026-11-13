@@ -1,0 +1,5 @@
+cpx32-tpl-idle  (idle )
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           379       366            743         0         0    0  0
+task-runner          3         3              8         0         0    0  0
+host              1518      1502              -         0         0    0  0

@@ -1,0 +1,6 @@
+cpx42-sqlite-disk-w2-100  (w2 -e MODE=vus -e VUS=5 -e ITERATIONS=100)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          4       482            502        96       193    0  0
+n8n-main           360       891            935       150       288    0  0
+k6: 100 req, 1.86/s, failed 0.0%, p50 2568 ms, p95 3249 ms, p99 5756 ms
+volume n8n-data: 188.6 MiB (delta 173.7 MiB)

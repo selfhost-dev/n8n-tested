@@ -1,0 +1,7 @@
+label=cpx42-cpu2-w1-rate50
+workflow=w1
+started_utc=2026-11-09T18:06:32Z
+k6_args=-e MODE=rate -e RATE=50 -e DURATION=1m
+load_start=1794247623
+load_end=1794247711
+ended_utc=2026-11-09T18:26:07Z

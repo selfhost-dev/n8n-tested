@@ -1,0 +1,140 @@
+{
+  "id": "benchW4Binary001",
+  "name": "W4 binary",
+  "active": false,
+  "nodes": [
+    {
+      "id": "benchW4Binary001-n0",
+      "position": [
+        0,
+        0
+      ],
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "webhookId": "bench-w4",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "w4",
+        "responseMode": "lastNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "benchW4Binary001-n1",
+      "position": [
+        240,
+        0
+      ],
+      "name": "Download file",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "http://fixtures:8080/file.bin",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "benchW4Binary001-n2",
+      "position": [
+        480,
+        0
+      ],
+      "name": "Pass 1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "parameters": {}
+    },
+    {
+      "id": "benchW4Binary001-n3",
+      "position": [
+        720,
+        0
+      ],
+      "name": "Pass 2",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "parameters": {}
+    },
+    {
+      "id": "benchW4Binary001-n4",
+      "position": [
+        960,
+        0
+      ],
+      "name": "Summarize",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0",
+              "name": "bytes",
+              "value": "={{ $binary.data.fileSize }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Pass 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass 1": {
+      "main": [
+        [
+          {
+            "node": "Pass 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass 2": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

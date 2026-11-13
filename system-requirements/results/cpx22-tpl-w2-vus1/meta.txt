@@ -1,0 +1,7 @@
+label=cpx22-tpl-w2-vus1
+workflow=w2
+started_utc=2026-11-10T07:21:27Z
+k6_args=-e MODE=vus -e VUS=1 -e ITERATIONS=10
+load_start=1794295317
+load_end=1794295329
+ended_utc=2026-11-10T07:22:45Z

@@ -1,0 +1,7 @@
+label=cpx22-tpl-idle
+workflow=idle
+started_utc=2026-11-10T07:11:45Z
+k6_args=
+load_start=1794294885
+load_end=1794294885
+ended_utc=2026-11-10T07:14:51Z

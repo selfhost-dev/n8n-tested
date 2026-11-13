@@ -1,0 +1,7 @@
+cpx32-iso-w5b-vus1  (w5 -e MODE=vus -e VUS=1 -e ITERATIONS=10 -e TIMEOUT=180s)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          3         6              8         0         2    0  0
+n8n-main           382       544            731         5        85    0  0
+host              1552      1699              -         0         0    0  0
+k6: 10 req, 0.13/s, failed 0.0%, p50 7356 ms, p95 11283 ms, p99 11800 ms
+volume n8n-data: 5.5 MiB (delta 0.1 MiB)

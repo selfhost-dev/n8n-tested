@@ -1,0 +1,7 @@
+label=cpx42-sqlite-disk-w2-100
+workflow=w2
+started_utc=2026-11-09T16:50:18Z
+k6_args=-e MODE=vus -e VUS=5 -e ITERATIONS=100
+load_start=1794243893
+load_end=1794243949
+ended_utc=2026-11-09T17:06:26Z

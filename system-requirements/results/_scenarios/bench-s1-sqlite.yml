@@ -1,0 +1,117 @@
+
+services:
+  n8n:
+    image: n8nio/n8n:2.40.7
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_ENCRYPTION_KEY=test-only-key-not-a-secret-000000
+      - N8N_HOST=localhost
+      - N8N_PROTOCOL=http
+      - N8N_SECURE_COOKIE=false
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=UTC
+      - TZ=UTC
+      - DB_SQLITE_POOL_SIZE=2
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_RUNNERS_MODE=external
+      - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
+      - N8N_RUNNERS_BROKER_PORT=5679
+      - N8N_RUNNERS_AUTH_TOKEN=test-only-runner-token
+      - N8N_NATIVE_PYTHON_RUNNER=true
+      - N8N_RUNNERS_MAX_CONCURRENCY=5
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=true
+      - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_PERSONALIZATION_ENABLED=false
+      # Test knobs (template defaults when unset).
+      - NODE_OPTIONS=
+      - N8N_DEFAULT_BINARY_DATA_MODE=default
+      - EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=336
+      - EXECUTIONS_DATA_PRUNE_MAX_COUNT=10000
+    volumes:
+      - n8n-data:/home/node/.n8n
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:5678/healthz"]
+      interval: 5s
+      timeout: 20s
+      retries: 10
+
+  task-runners:
+    image: n8nio/runners:2.40.7
+    environment:
+      - N8N_RUNNERS_TASK_BROKER_URI=http://n8n:5679
+      - N8N_RUNNERS_AUTH_TOKEN=test-only-runner-token
+      - N8N_RUNNERS_AUTO_SHUTDOWN_TIMEOUT=15
+      - N8N_RUNNERS_MAX_CONCURRENCY=5
+    depends_on:
+      - n8n
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:5680/healthz"]
+      interval: 5s
+      timeout: 20s
+      retries: 10
+
+  # Serves /small.json (~1 KB), /big.json (FIXTURE_JSON_MB, default 20 MB) and
+  # /file.bin (FIXTURE_FILE_MB random bytes, default 50 MB). Built once at start.
+  fixtures:
+    image: node:22-alpine
+    environment:
+      - FIXTURE_JSON_MB=20
+      - FIXTURE_FILE_MB=50
+    command:
+      - node
+      - -e
+      - |
+        const http = require('http'), crypto = require('crypto');
+        const jsonMb = +process.env.FIXTURE_JSON_MB, fileMb = +process.env.FIXTURE_FILE_MB;
+        const small = JSON.stringify({ id: 1, name: 'small', tags: ['a', 'b'], text: 'x'.repeat(900) });
+        const row = (i) => ({ id: i, name: 'item-' + i, text: 'y'.repeat(200) });
+        const n = Math.ceil((jsonMb * 1024 * 1024) / JSON.stringify(row(100000)).length);
+        const big = JSON.stringify({ items: Array.from({ length: n }, (_, i) => row(i)) });
+        const file = crypto.randomBytes(fileMb * 1024 * 1024);
+        const routes = {
+          '/small.json': ['application/json', small],
+          '/big.json': ['application/json', big],
+          '/file.bin': ['application/octet-stream', file],
+        };
+        http.createServer((req, res) => {
+          const r = routes[req.url];
+          if (!r) { res.writeHead(404); return res.end(); }
+          res.writeHead(200, { 'content-type': r[0], 'content-length': Buffer.byteLength(r[1]) });
+          res.end(r[1]);
+        }).listen(8080, () => console.log('fixtures ready', { bigBytes: big.length, fileBytes: file.length, items: n }));
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/small.json"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # Test scaffolding: reports the bytes in each data volume (GET :18081/), mounted
+  # read-only, because the unprivileged SSH user cannot read Docker volumes.
+  sizer:
+    image: node:22-alpine
+    ports:
+      - "18081:8081"
+    volumes:
+      - n8n-data:/vol/n8n-data:ro
+    command:
+      - node
+      - -e
+      - |
+        const fs = require('fs'), path = require('path'), http = require('http');
+        const du = (p) => { let s = 0; for (const e of fs.readdirSync(p, { withFileTypes: true })) {
+          const f = path.join(p, e.name); try { s += e.isDirectory() ? du(f) : fs.lstatSync(f).size; } catch {} } return s; };
+        const files = (p) => fs.readdirSync(p).filter((n) => /sqlite|\.db/.test(n)).map((n) => [n, fs.statSync(path.join(p, n)).size]);
+        http.createServer((_, res) => {
+          const out = {};
+          for (const v of fs.readdirSync('/vol')) { try { out[v] = { bytes: du('/vol/' + v) }; } catch (e) { out[v] = { error: e.code }; } }
+          try { out['n8n-data'].files = Object.fromEntries(files('/vol/n8n-data')); } catch {}
+          res.writeHead(200, { 'content-type': 'application/json' }); res.end(JSON.stringify(out));
+        }).listen(8081);
+
+volumes:
+  n8n-data:

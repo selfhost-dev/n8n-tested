@@ -1,0 +1,102 @@
+{
+  "id": "benchW2Code00001",
+  "name": "W2 code",
+  "active": false,
+  "nodes": [
+    {
+      "id": "benchW2Code00001-n0",
+      "position": [
+        0,
+        0
+      ],
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "webhookId": "bench-w2",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "w2",
+        "responseMode": "lastNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "benchW2Code00001-n1",
+      "position": [
+        240,
+        0
+      ],
+      "name": "Generate items",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const n = 10000;\nconst pad = 'z'.repeat(1000);\nreturn Array.from({ length: n }, (_, i) => ({ json: { id: i, pad } }));"
+      }
+    },
+    {
+      "id": "benchW2Code00001-n2",
+      "position": [
+        480,
+        0
+      ],
+      "name": "Transform",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "return $input.all().map(({ json }) => ({ json: { id: json.id, len: json.pad.length, hash: (json.id * 2654435761) % 4294967296 } }));"
+      }
+    },
+    {
+      "id": "benchW2Code00001-n3",
+      "position": [
+        720,
+        0
+      ],
+      "name": "Summarize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const all = $input.all();\nreturn [{ json: { items: all.length, totalLen: all.reduce((s, i) => s + i.json.len, 0) } }];"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Generate items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate items": {
+      "main": [
+        [
+          {
+            "node": "Transform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

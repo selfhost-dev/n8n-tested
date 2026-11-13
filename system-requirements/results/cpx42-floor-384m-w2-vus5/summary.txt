@@ -1,0 +1,6 @@
+cpx42-floor-384m-w2-vus5  (w2 -e MODE=vus -e VUS=5 -e ITERATIONS=10)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          8       130            319        64       148    0  0
+n8n-main           316       375            384        27        81    0  2
+k6: 10 req, 2.78/s, failed 100.0%, p50 1635 ms, p95 3273 ms, p99 3273 ms
+volume n8n-data: 19.0 MiB (delta 0.0 MiB)

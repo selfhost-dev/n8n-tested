@@ -1,0 +1,6 @@
+cpx42-floor-384m-w1-rate5  (w1 -e MODE=rate -e RATE=5 -e DURATION=1m)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          3         4              9         1         6    0  0
+n8n-main           302       345            384        89       177    0  0
+k6: 301 req, 4.98/s, failed 0.0%, p50 228 ms, p95 262 ms, p99 361 ms
+volume n8n-data: 8.7 MiB (delta 3.2 MiB)

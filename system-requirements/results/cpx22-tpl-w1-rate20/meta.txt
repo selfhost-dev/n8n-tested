@@ -1,0 +1,7 @@
+label=cpx22-tpl-w1-rate20
+workflow=w1
+started_utc=2026-11-10T07:19:12Z
+k6_args=-e MODE=rate -e RATE=20 -e DURATION=1m
+load_start=1794295182
+load_end=1794295244
+ended_utc=2026-11-10T07:21:21Z

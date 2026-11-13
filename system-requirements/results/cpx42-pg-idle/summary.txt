@@ -1,0 +1,7 @@
+cpx42-pg-idle  (idle )
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           391       392            681         1         1    0  0
+postgres           121       121            127         4         4    0  0
+task-runner          3         3              9         2         2    0  0
+volume n8n-data: 0.0 MiB (delta 0.0 MiB)
+volume pg-data: 69.7 MiB (delta 0.2 MiB)

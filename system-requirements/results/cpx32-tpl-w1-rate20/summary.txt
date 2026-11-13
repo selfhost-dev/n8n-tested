@@ -1,0 +1,6 @@
+cpx32-tpl-w1-rate20  (w1 -e MODE=rate -e RATE=20 -e DURATION=1m)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           394       499            743       125       230    0  0
+task-runner          3         8              9         0         2    0  0
+host              1529      1739              -         0         0    0  0
+k6: 1200 req, 19.96/s, failed 0.0%, p50 187 ms, p95 299 ms, p99 370 ms

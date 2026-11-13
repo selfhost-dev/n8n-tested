@@ -1,0 +1,36 @@
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": EOF"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": EOF"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": EOF"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": EOF"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": EOF"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T01:14:28+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w4\": dial tcp n8n-server:5678: connect: connection refused"
+
+     ✗ status 200
+      ↳  0% — ✓ 0 / ✗ 15
+
+     checks.....................: 0.00%   ✓ 0        ✗ 15 
+     data_received..............: 0 B     0 B/s
+     data_sent..................: 745 B   260 B/s
+     http_req_blocked...........: min=0s       med=0s       avg=79.19ms  p(90)=237.67ms p(95)=237.73ms p(99)=237.83ms max=237.86ms
+     http_req_connecting........: min=0s       med=0s       avg=79ms     p(90)=237.07ms p(95)=237.2ms  p(99)=237.28ms max=237.3ms 
+     http_req_duration..........: min=0s       med=0s       avg=766.55ms p(90)=2.3s     p(95)=2.3s     p(99)=2.3s     max=2.3s    
+     http_req_failed............: 100.00% ✓ 15       ✗ 0  
+     http_req_receiving.........: min=0s       med=0s       avg=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s      
+     http_req_sending...........: min=0s       med=0s       avg=187.6µs  p(90)=553.8µs  p(95)=757.89µs p(99)=1.02ms   max=1.09ms  
+     http_req_tls_handshaking...: min=0s       med=0s       avg=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s      
+     http_req_waiting...........: min=0s       med=0s       avg=766.36ms p(90)=2.29s    p(95)=2.3s     p(99)=2.3s     max=2.3s    
+     http_reqs..................: 15      5.241341/s
+     iteration_duration.........: min=153.39ms med=162.15ms avg=951.99ms p(90)=2.53s    p(95)=2.53s    p(99)=2.53s    max=2.53s   
+     iterations.................: 15      5.241341/s
+     vus........................: 5       min=5      max=5
+     vus_max....................: 5       min=5      max=5
+

@@ -1,0 +1,22 @@
+time="2026-11-10T12:54:51+05:30" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+
+     ✓ status 200
+
+     checks.........................: 100.00% ✓ 5        ✗ 0  
+     data_received..................: 6.1 kB  1.7 kB/s
+     data_sent......................: 946 B   262 B/s
+     http_req_blocked...............: min=0s       med=1µs      avg=186.01ms p(90)=558.05ms p(95)=744.07ms p(99)=892.88ms max=930.08ms
+     http_req_connecting............: min=0s       med=0s       avg=32.88ms  p(90)=98.64ms  p(95)=131.52ms p(99)=157.83ms max=164.4ms 
+     http_req_duration..............: min=504.68ms med=536.81ms avg=533.97ms p(90)=551.88ms p(95)=554.91ms p(99)=557.33ms max=557.93ms
+       { expected_response:true }...: min=504.68ms med=536.81ms avg=533.97ms p(90)=551.88ms p(95)=554.91ms p(99)=557.33ms max=557.93ms
+     http_req_failed................: 0.00%   ✓ 0        ✗ 5  
+     http_req_receiving.............: min=40µs     med=174µs    avg=352.4µs  p(90)=738.6µs  p(95)=743.8µs  p(99)=747.95µs max=749µs   
+     http_req_sending...............: min=101µs    med=256µs    avg=537.8µs  p(90)=1.16ms   p(95)=1.36ms   p(99)=1.51ms   max=1.55ms  
+     http_req_tls_handshaking.......: min=0s       med=0s       avg=37.55ms  p(90)=112.67ms p(95)=150.23ms p(99)=180.28ms max=187.79ms
+     http_req_waiting...............: min=503.85ms med=536.45ms avg=533.08ms p(90)=550.5ms  p(95)=553.4ms  p(99)=555.72ms max=556.3ms 
+     http_reqs......................: 5       1.387156/s
+     iteration_duration.............: min=505.24ms med=539.36ms avg=720.85ms p(90)=1.1s     p(95)=1.29s    p(99)=1.43s    max=1.47s   
+     iterations.....................: 5       1.387156/s
+     vus............................: 1       min=1      max=1
+     vus_max........................: 1       min=1      max=1
+

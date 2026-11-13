@@ -1,0 +1,23 @@
+time="2026-11-10T00:03:24+05:30" level=warning msg="Insufficient VUs, reached 500 active VUs and cannot initialize more" executor=constant-arrival-rate scenario=load
+
+     ✓ status 200
+
+     checks.........................: 100.00% ✓ 1568      ✗ 0    
+     data_received..................: 840 kB  11 kB/s
+     data_sent......................: 234 kB  3.1 kB/s
+     dropped_iterations.............: 1432    18.970273/s
+     http_req_blocked...............: min=0s    med=11µs   avg=52.84ms p(90)=162.44ms p(95)=165.17ms p(99)=225.38ms max=284.04ms
+     http_req_connecting............: min=0s    med=0s     avg=52.76ms p(90)=162.29ms p(95)=164.97ms p(99)=225.3ms  max=283.92ms
+     http_req_duration..............: min=1.13s med=20.87s avg=18.14s  p(90)=22.99s   p(95)=23.06s   p(99)=23.16s   max=23.19s  
+       { expected_response:true }...: min=1.13s med=20.87s avg=18.14s  p(90)=22.99s   p(95)=23.06s   p(99)=23.16s   max=23.19s  
+     http_req_failed................: 0.00%   ✓ 0         ✗ 1568 
+     http_req_receiving.............: min=11µs  med=112µs  avg=159.4µs p(90)=277µs    p(95)=410.89µs p(99)=1.26ms   max=2.95ms  
+     http_req_sending...............: min=5µs   med=50µs   avg=86.29µs p(90)=174µs    p(95)=233.64µs p(99)=645.94µs max=2.88ms  
+     http_req_tls_handshaking.......: min=0s    med=0s     avg=0s      p(90)=0s       p(95)=0s       p(99)=0s       max=0s      
+     http_req_waiting...............: min=1.13s med=20.87s avg=18.14s  p(90)=22.99s   p(95)=23.06s   p(99)=23.16s   max=23.19s  
+     http_reqs......................: 1568    20.771919/s
+     iteration_duration.............: min=1.3s  med=20.89s avg=18.2s   p(90)=23.01s   p(95)=23.15s   p(99)=23.3s    max=23.39s  
+     iterations.....................: 1568    20.771919/s
+     vus............................: 500     min=50      max=500
+     vus_max........................: 500     min=50      max=500
+

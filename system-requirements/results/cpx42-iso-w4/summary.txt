@@ -1,0 +1,6 @@
+cpx42-iso-w4  (w4 -e MODE=vus -e VUS=1 -e ITERATIONS=10)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          4         7              9         1         6    0  0
+n8n-main           387      1663           1673       136       265    0  0
+k6: 10 req, 0.50/s, failed 0.0%, p50 1967 ms, p95 2121 ms, p99 2158 ms
+volume n8n-data: 739.9 MiB (delta 734.5 MiB)

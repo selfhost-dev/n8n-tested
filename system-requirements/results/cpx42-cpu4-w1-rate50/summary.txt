@@ -1,0 +1,6 @@
+cpx42-cpu4-w1-rate50  (w1 -e MODE=rate -e RATE=50 -e DURATION=1m)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           390      2455           2509       329       499    0  0
+task-runner          3         3              9         1         6    0  0
+k6: 1568 req, 20.77/s, failed 0.0%, p50 20877 ms, p95 23063 ms, p99 23163 ms
+volume n8n-data: 19.9 MiB (delta 14.5 MiB)

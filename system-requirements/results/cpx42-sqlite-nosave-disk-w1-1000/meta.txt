@@ -1,0 +1,7 @@
+label=cpx42-sqlite-nosave-disk-w1-1000
+workflow=w1
+started_utc=2026-11-09T17:23:47Z
+k6_args=-e MODE=vus -e VUS=10 -e ITERATIONS=1000
+load_start=1794245038
+load_end=1794245084
+ended_utc=2026-11-09T17:32:46Z

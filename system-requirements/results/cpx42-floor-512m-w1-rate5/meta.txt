@@ -1,0 +1,7 @@
+label=cpx42-floor-512m-w1-rate5
+workflow=w1
+started_utc=2026-11-09T19:08:38Z
+k6_args=-e MODE=rate -e RATE=5 -e DURATION=1m
+load_start=1794251348
+load_end=1794251411
+ended_utc=2026-11-09T19:10:48Z

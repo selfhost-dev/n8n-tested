@@ -1,0 +1,36 @@
+# Fixtures only (phase 3): serves the W1/W3/W4 payloads next to the real n8n template.
+services:
+  fixtures:
+    image: node:22-alpine
+    environment:
+      - FIXTURE_JSON_MB=${FIXTURE_JSON_MB:-20}
+      - FIXTURE_FILE_MB=${FIXTURE_FILE_MB:-50}
+    command:
+      - node
+      - -e
+      - |
+        const http = require('http'), crypto = require('crypto');
+        const jsonMb = +process.env.FIXTURE_JSON_MB, fileMb = +process.env.FIXTURE_FILE_MB;
+        const small = JSON.stringify({ id: 1, name: 'small', tags: ['a', 'b'], text: 'x'.repeat(900) });
+        const row = (i) => ({ id: i, name: 'item-' + i, text: 'y'.repeat(200) });
+        const n = Math.ceil((jsonMb * 1024 * 1024) / JSON.stringify(row(100000)).length);
+        const big = JSON.stringify({ items: Array.from({ length: n }, (_, i) => row(i)) });
+        const file = crypto.randomBytes(fileMb * 1024 * 1024);
+        const routes = {
+          '/small.json': ['application/json', small],
+          '/big.json': ['application/json', big],
+          '/file.bin': ['application/octet-stream', file],
+        };
+        http.createServer((req, res) => {
+          const r = routes[req.url];
+          if (!r) { res.writeHead(404); return res.end(); }
+          res.writeHead(200, { 'content-type': r[0], 'content-length': Buffer.byteLength(r[1]) });
+          res.end(r[1]);
+        }).listen(8080, () => console.log('fixtures ready', { bigBytes: big.length, fileBytes: file.length, items: n }));
+    ports:
+      - "${FIXTURES_HOST_PORT:-17001}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/small.json"]
+      interval: 5s
+      timeout: 5s
+      retries: 20

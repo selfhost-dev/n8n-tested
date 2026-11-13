@@ -1,0 +1,7 @@
+label=cpx42-binfs-w4-vus5
+workflow=w4
+started_utc=2026-11-09T16:35:15Z
+k6_args=-e MODE=vus -e VUS=5 -e ITERATIONS=25
+load_start=1794242146
+load_end=1794242154
+ended_utc=2026-11-09T16:36:31Z

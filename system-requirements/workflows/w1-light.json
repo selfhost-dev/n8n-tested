@@ -1,0 +1,96 @@
+{
+  "id": "benchW1Light0001",
+  "name": "W1 light",
+  "active": false,
+  "nodes": [
+    {
+      "id": "benchW1Light0001-n0",
+      "position": [
+        0,
+        0
+      ],
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "webhookId": "bench-w1",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "w1",
+        "responseMode": "lastNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "benchW1Light0001-n1",
+      "position": [
+        240,
+        0
+      ],
+      "name": "Fetch small JSON",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "http://fixtures:8080/small.json",
+        "options": {}
+      }
+    },
+    {
+      "id": "benchW1Light0001-n2",
+      "position": [
+        480,
+        0
+      ],
+      "name": "Shape",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0",
+              "name": "ok",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "f1",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch small JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch small JSON": {
+      "main": [
+        [
+          {
+            "node": "Shape",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

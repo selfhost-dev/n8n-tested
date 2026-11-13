@@ -1,0 +1,7 @@
+label=smoke-w1
+workflow=w1
+started_utc=2026-11-09T15:56:57Z
+k6_args=-e MODE=rate -e RATE=5 -e DURATION=20s
+load_start=1794239828
+load_end=1794239850
+ended_utc=2026-11-09T15:57:42Z

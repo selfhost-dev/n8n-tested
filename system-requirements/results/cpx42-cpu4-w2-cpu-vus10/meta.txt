@@ -1,0 +1,7 @@
+label=cpx42-cpu4-w2-cpu-vus10
+workflow=w2
+started_utc=2026-11-09T18:34:58Z
+k6_args=-e MODE=vus -e VUS=10 -e ITERATIONS=60
+load_start=1794249329
+load_end=1794249368
+ended_utc=2026-11-09T18:36:45Z

@@ -1,0 +1,6 @@
+cpx42-sqlite-w2-vus1  (w2 -e MODE=vus -e VUS=1 -e ITERATIONS=10)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          4       356            398        61       108    0  0
+n8n-main           443       588            723        76       171    0  0
+k6: 10 req, 0.83/s, failed 0.0%, p50 911 ms, p95 2499 ms, p99 3492 ms
+volume n8n-data: 37.6 MiB (delta 15.7 MiB)

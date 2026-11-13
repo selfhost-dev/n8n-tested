@@ -1,0 +1,8 @@
+cpx42-pg-w1-rate10  (w1 -e MODE=rate -e RATE=10 -e DURATION=3m)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           393       616            681       152       286    0  0
+postgres           121       138            140        21        40    0  0
+task-runner          3         4              9         1         7    0  0
+k6: 1800 req, 9.99/s, failed 0.0%, p50 236 ms, p95 342 ms, p99 354 ms
+volume n8n-data: 8.0 MiB (delta 8.0 MiB)
+volume pg-data: 76.1 MiB (delta 6.4 MiB)

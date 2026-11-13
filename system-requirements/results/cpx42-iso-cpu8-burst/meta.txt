@@ -1,0 +1,7 @@
+label=cpx42-iso-cpu8-burst
+workflow=w1
+started_utc=2026-11-09T20:09:21Z
+k6_args=-e MODE=rate -e RATE=50 -e DURATION=1m
+load_start=1794255021
+load_end=1794255098
+ended_utc=2026-11-09T20:12:15Z

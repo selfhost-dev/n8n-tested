@@ -1,0 +1,6 @@
+cpx42-binfs-w4-vus5  (w4 -e MODE=vus -e VUS=5 -e ITERATIONS=25)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           852      2331           2341       263       520    0  0
+task-runner          4         4             10         1         6    0  0
+k6: 25 req, 3.65/s, failed 0.0%, p50 1294 ms, p95 1642 ms, p99 1651 ms
+volume n8n-data: 1756.4 MiB (delta 1250.9 MiB)

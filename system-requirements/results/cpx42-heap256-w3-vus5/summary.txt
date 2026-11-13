@@ -1,0 +1,6 @@
+cpx42-heap256-w3-vus5  (w3 -e MODE=vus -e VUS=5 -e ITERATIONS=15)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           354       567            585       262       472    0  2
+task-runner          3         3              9         1         5    0  0
+k6: 15 req, 3.79/s, failed 93.3%, p50 0 ms, p95 3469 ms, p99 3469 ms
+volume n8n-data: 16.0 MiB (delta 10.6 MiB)

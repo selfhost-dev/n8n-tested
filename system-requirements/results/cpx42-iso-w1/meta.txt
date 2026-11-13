@@ -1,0 +1,7 @@
+label=cpx42-iso-w1
+workflow=w1
+started_utc=2026-11-09T19:53:25Z
+k6_args=-e MODE=vus -e VUS=1 -e ITERATIONS=20
+load_start=1794254066
+load_end=1794254073
+ended_utc=2026-11-09T19:55:10Z

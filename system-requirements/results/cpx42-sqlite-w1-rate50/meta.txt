@@ -1,0 +1,7 @@
+label=cpx42-sqlite-w1-rate50
+workflow=w1
+started_utc=2026-11-09T16:25:22Z
+k6_args=-e MODE=rate -e RATE=50 -e DURATION=1m
+load_start=1794241552
+load_end=1794241629
+ended_utc=2026-11-09T16:27:46Z

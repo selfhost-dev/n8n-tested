@@ -1,0 +1,7 @@
+label=cpx42-sqlite-w2-vus20
+workflow=w2
+started_utc=2026-11-09T16:16:58Z
+k6_args=-e MODE=vus -e VUS=20 -e ITERATIONS=60
+load_start=1794241049
+load_end=1794241085
+ended_utc=2026-11-09T16:18:42Z

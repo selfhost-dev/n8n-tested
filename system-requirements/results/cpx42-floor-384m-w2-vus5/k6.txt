@@ -1,0 +1,31 @@
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": EOF"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": EOF"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": EOF"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": EOF"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": EOF"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": dial tcp n8n-server:5678: connect: connection refused"
+time="2026-11-10T00:53:50+05:30" level=warning msg="Request Failed" error="Post \"http://n8n-server:5678/webhook/w2\": dial tcp n8n-server:5678: connect: connection refused"
+
+     ✗ status 200
+      ↳  0% — ✓ 0 / ✗ 10
+
+     checks.....................: 0.00%   ✓ 0        ✗ 10 
+     data_received..............: 0 B     0 B/s
+     data_sent..................: 745 B   207 B/s
+     http_req_blocked...........: min=0s       med=80.38ms avg=81.23ms p(90)=163.58ms p(95)=164.01ms p(99)=164.36ms max=164.45ms
+     http_req_connecting........: min=0s       med=79.91ms avg=80.76ms p(90)=162.65ms p(95)=163.1ms  p(99)=163.45ms max=163.54ms
+     http_req_duration..........: min=0s       med=1.63s   avg=1.63s   p(90)=3.27s    p(95)=3.27s    p(99)=3.27s    max=3.27s   
+     http_req_failed............: 100.00% ✓ 10       ✗ 0  
+     http_req_receiving.........: min=0s       med=0s      avg=0s      p(90)=0s       p(95)=0s       p(99)=0s       max=0s      
+     http_req_sending...........: min=0s       med=13µs    avg=49.6µs  p(90)=146.8µs  p(95)=208.89µs p(99)=258.58µs max=271µs   
+     http_req_tls_handshaking...: min=0s       med=0s      avg=0s      p(90)=0s       p(95)=0s       p(99)=0s       max=0s      
+     http_req_waiting...........: min=0s       med=1.63s   avg=1.63s   p(90)=3.27s    p(95)=3.27s    p(99)=3.27s    max=3.27s   
+     http_reqs..................: 10      2.776267/s
+     iteration_duration.........: min=158.74ms med=1.79s   avg=1.79s   p(90)=3.43s    p(95)=3.43s    p(99)=3.43s    max=3.43s   
+     iterations.................: 10      2.776267/s
+     vus........................: 5       min=5      max=5
+     vus_max....................: 5       min=5      max=5
+

@@ -1,0 +1,7 @@
+label=cpx42-floor-384m-w4-vus1
+workflow=w4
+started_utc=2026-11-09T19:25:50Z
+k6_args=-e MODE=vus -e VUS=1 -e ITERATIONS=3
+load_start=1794252381
+load_end=1794252384
+ended_utc=2026-11-09T19:27:01Z

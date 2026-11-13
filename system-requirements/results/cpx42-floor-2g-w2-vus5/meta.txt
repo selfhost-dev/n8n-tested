@@ -1,0 +1,7 @@
+label=cpx42-floor-2g-w2-vus5
+workflow=w2
+started_utc=2026-11-09T18:44:08Z
+k6_args=-e MODE=vus -e VUS=5 -e ITERATIONS=10
+load_start=1794249878
+load_end=1794249889
+ended_utc=2026-11-09T18:45:26Z

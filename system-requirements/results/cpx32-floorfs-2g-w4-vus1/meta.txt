@@ -1,0 +1,7 @@
+label=cpx32-floorfs-2g-w4-vus1
+workflow=w4
+started_utc=2026-11-10T07:33:41Z
+k6_args=-e MODE=vus -e VUS=1 -e ITERATIONS=3
+load_start=1794296051
+load_end=1794296055
+ended_utc=2026-11-10T07:34:52Z

@@ -1,0 +1,7 @@
+cpx32-floorfs-512m-w4-vus1  (w4 -e MODE=vus -e VUS=1 -e ITERATIONS=3)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          3         3              8         0         1    0  0
+n8n-main           339       433            512        82       207    0  0
+host              1528      1611              -         0         0    0  0
+k6: 3 req, 2.11/s, failed 0.0%, p50 402 ms, p95 495 ms, p99 503 ms
+volume n8n-data: 155.4 MiB (delta 150.0 MiB)

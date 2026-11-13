@@ -1,0 +1,6 @@
+cpx22-tpl-w2-vus5  (w2 -e MODE=vus -e VUS=5 -e ITERATIONS=25)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           633       951            974        77       121    0  0
+task-runner        105       453            494        61       105    0  0
+host              1577      2214              -         0         0    0  0
+k6: 25 req, 2.03/s, failed 0.0%, p50 2121 ms, p95 3903 ms, p99 3975 ms

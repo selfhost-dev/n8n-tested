@@ -1,0 +1,7 @@
+label=cpx42-pg-disk-w2-100
+workflow=w2
+started_utc=2026-11-09T20:54:00Z
+k6_args=-e MODE=vus -e VUS=5 -e ITERATIONS=100
+load_start=1794257650
+load_end=1794257706
+ended_utc=2026-11-09T20:55:43Z

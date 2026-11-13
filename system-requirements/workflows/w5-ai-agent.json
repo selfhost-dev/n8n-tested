@@ -1,0 +1,93 @@
+{
+  "id": "benchW5Agent0001",
+  "name": "W5 AI agent",
+  "active": false,
+  "nodes": [
+    {
+      "id": "benchW5Agent0001-n0",
+      "position": [
+        0,
+        0
+      ],
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "webhookId": "bench-w5",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "w5",
+        "responseMode": "lastNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "benchW5Agent0001-n1",
+      "position": [
+        240,
+        0
+      ],
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "parameters": {
+        "promptType": "define",
+        "text": "Summarize in one sentence: n8n is a workflow automation tool that connects apps and runs code.",
+        "options": {}
+      }
+    },
+    {
+      "id": "benchW5Agent0001-model",
+      "name": "Chat model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ],
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "id",
+          "value": "nvidia/nemotron-3.5-lightning:free"
+        },
+        "options": {
+          "maxTokens": 800
+        }
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "benchOpenAi00001",
+          "name": "bench-openai"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

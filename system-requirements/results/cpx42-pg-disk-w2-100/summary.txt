@@ -1,0 +1,8 @@
+cpx42-pg-disk-w2-100  (w2 -e MODE=vus -e VUS=5 -e ITERATIONS=100)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           508       731            777       148       245    0  0
+postgres           181       302            309        16        44    0  0
+task-runner          9       471            488       100       178    0  0
+k6: 100 req, 1.87/s, failed 0.0%, p50 2581 ms, p95 3295 ms, p99 6416 ms
+volume n8n-data: 13.4 MiB (delta 0.8 MiB)
+volume pg-data: 182.3 MiB (delta 75.6 MiB)

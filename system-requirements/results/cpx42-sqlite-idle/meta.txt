@@ -1,0 +1,7 @@
+label=cpx42-sqlite-idle
+workflow=idle
+started_utc=2026-11-09T16:06:30Z
+k6_args=
+load_start=1794240570
+load_end=1794240570
+ended_utc=2026-11-09T16:09:37Z

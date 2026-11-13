@@ -1,0 +1,7 @@
+label=cpx42-floor-512m-idle
+workflow=idle
+started_utc=2026-11-09T19:07:24Z
+k6_args=
+load_start=1794251305
+load_end=1794251305
+ended_utc=2026-11-09T19:08:32Z

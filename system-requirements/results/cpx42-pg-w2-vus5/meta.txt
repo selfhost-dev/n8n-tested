@@ -1,0 +1,7 @@
+label=cpx42-pg-w2-vus5
+workflow=w2
+started_utc=2026-11-09T20:50:53Z
+k6_args=-e MODE=vus -e VUS=5 -e ITERATIONS=25
+load_start=1794257483
+load_end=1794257498
+ended_utc=2026-11-09T20:52:16Z

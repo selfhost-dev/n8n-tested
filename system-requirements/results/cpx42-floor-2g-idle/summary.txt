@@ -1,0 +1,5 @@
+cpx42-floor-2g-idle  (idle )
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+n8n-main           375       374            627         6         6    0  0
+task-runner          4         4              9         6         6    0  0
+volume n8n-data: 5.4 MiB (delta 0.0 MiB)

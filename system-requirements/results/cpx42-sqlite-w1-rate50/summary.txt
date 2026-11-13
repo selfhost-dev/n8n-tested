@@ -1,0 +1,6 @@
+cpx42-sqlite-w1-rate50  (w1 -e MODE=rate -e RATE=50 -e DURATION=1m)
+role          idle_MiB  peak_MiB  lifetime_peak  cpu_avg%  cpu_max%  oom  restarts
+task-runner          9         9            768         1         6    0  0
+n8n-main          3351      5192           5202       333       606    0  0
+k6: 1520 req, 20.25/s, failed 0.1%, p50 21570 ms, p95 24189 ms, p99 24382 ms
+volume n8n-data: 2787.2 MiB (delta 13.4 MiB)
