@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
-# Imports and publishes the test workflows into the running n8n container.
+# Imports and publishes the test workflows into a running n8n container.
 #
-#   scripts/import.sh [container] [w1-light w2-code ...]
+#   scripts/import.sh <container> [w1-light w2-code ...]
 #
+# Name the container explicitly (docker compose -p n8nbench ps -q n8n), so the
+# workflows never land in another n8n on the same machine.
 # W5 is skipped unless named, since it needs the "bench-openai" credential first.
 set -euo pipefail
 here=$(cd "$(dirname "$0")/.." && pwd)
-container=${1:-$(docker ps --format '{{.Names}}' | grep -E '(^|[-_])n8n([-_][0-9a-z]+)?$' | grep -v runner | head -1)}
-shift || true
+container=${1:?usage: import.sh <container> [workflow ...]}
+shift
 names=("$@")
 [[ ${#names[@]} -gt 0 ]] || names=(w1-light w2-code w3-big-json w4-binary)
 
 for n in "${names[@]}"; do
+  [[ $n =~ ^[A-Za-z0-9_-]+$ ]] || { echo "bad workflow name: $n" >&2; exit 2; }
   f="$here/workflows/$n.json"
   id=$(jq -r .id "$f")
   docker cp "$f" "$container:/tmp/$n.json"

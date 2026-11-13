@@ -2,3 +2,4 @@
 *.stdout
 *.pid
 .env
+bench.rendered.yml

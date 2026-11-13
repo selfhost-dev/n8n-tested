@@ -2,8 +2,11 @@
 #
 # n8n main + task runner mirror the Selfhost.dev n8n one-click template (n8n 2.40.7),
 # with three test-only changes:
-#   1. a fixed encryption key and plain HTTP (no reverse proxy), so the load generator
-#      can hit the webhook port directly;
+#   1. plain HTTP (no reverse proxy) so the load generator can hit the webhook port
+#      directly. Ports bind to 127.0.0.1 unless N8N_BIND / SIZER_BIND say otherwise:
+#      on a server, reach them through an SSH tunnel. Never expose this stack to the
+#      internet: until setup runs, whoever reaches n8n first can create the owner;
+#      after it, the test webhooks have no auth.
 #   2. mem_limit / memswap_limit / cpus read from the environment, so one server
 #      can emulate smaller ones;
 #   3. a `fixtures` service that serves the fixed payloads W1/W3/W4 download,
@@ -17,9 +20,10 @@ services:
   n8n:
     image: n8nio/n8n:2.40.7
     ports:
-      - "${N8N_HOST_PORT:-5678}:5678"
+      - "${N8N_BIND:-127.0.0.1}:${N8N_HOST_PORT:-5678}:5678"
     environment:
-      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY:-test-only-key-not-a-secret-000000}
+      # Encrypts stored credentials (the W5 API key). Required: openssl rand -hex 32
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY:?set N8N_ENCRYPTION_KEY (openssl rand -hex 32)}
       - N8N_HOST=${N8N_HOST:-localhost}
       - N8N_PROTOCOL=http
       - N8N_SECURE_COOKIE=false
@@ -114,11 +118,11 @@ services:
       retries: 20
 
   # Test scaffolding: reports the bytes in each data volume (GET :18081/), mounted
-  # read-only, because the unprivileged SSH user cannot read Docker volumes.
+  # read-only, because an unprivileged SSH user cannot read Docker volumes.
   sizer:
     image: node:22-alpine
     ports:
-      - "${SIZER_HOST_PORT:-18081}:8081"
+      - "${SIZER_BIND:-127.0.0.1}:${SIZER_HOST_PORT:-18081}:8081"
     volumes:
       - n8n-data:/vol/n8n-data:ro
     command:

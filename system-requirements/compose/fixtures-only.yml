@@ -28,7 +28,7 @@ services:
           res.end(r[1]);
         }).listen(8080, () => console.log('fixtures ready', { bigBytes: big.length, fileBytes: file.length, items: n }));
     ports:
-      - "${FIXTURES_HOST_PORT:-17001}:8080"
+      - "${FIXTURES_BIND:-127.0.0.1}:${FIXTURES_HOST_PORT:-17001}:8080"
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/small.json"]
       interval: 5s

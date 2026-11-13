@@ -2,14 +2,22 @@
 // concrete file: every ${VAR:-default} is replaced from the environment or its
 // default, so the deployed compose holds exact values for each scenario.
 //
-//   N8N_MEM_LIMIT=1g DB=postgres bun scripts/render.mjs > /tmp/scenario.yml
+// ${VAR:?message} must be set: rendering stops with the message otherwise.
+//
+//   N8N_MEM_LIMIT=1g DB=postgres bun scripts/render.mjs > bench.rendered.yml
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), "..", "compose");
+const fail = (msg) => { console.error(msg); process.exit(2); };
 const sub = (text) =>
-  text.replace(/\$\{([A-Z0-9_]+)(?::-([^}]*))?\}/g, (_, name, def = "") => process.env[name] ?? def);
+  text.replace(/\$\{([A-Z0-9_]+)(?::([-?])([^}]*))?\}/g, (_, name, op, arg = "") => {
+    const value = process.env[name];
+    if (value != null && /[\r\n]/.test(value)) fail(`${name} must not contain a newline`);
+    if (op === "?" && !value) fail(`${name}: ${arg}`);
+    return value ?? (op === "-" ? arg : "");
+  });
 
 let base = sub(readFileSync(join(dir, "docker-compose.yml"), "utf8"));
 
